@@ -1,0 +1,94 @@
+You are tasked with designing a single-page, fully interactive cybersecurity portfolio for Adel Ait Mouali, a Network Specialist with hands-on experience across offensive security, defensive security, infrastructure, scripting, IoT, and applied machine learning. The portfolio must not resemble a traditional multi-page CV or menu-based website; instead, it should feel like a living system that dynamically reveals skills and capabilities based on cursor interaction.
+
+Core Concept
+
+The portfolio represents Adel’s skillset as an interactive spectrum between offense and defense:
+
+Red Zone – Offensive Security / Hacking Skills
+Hovering over this area transforms the interface to display all offensive skills and experiences dynamically. Backgrounds, accents, and panels adopt red/orange tones. Skills include:
+
+Linux 101, privilege awareness
+
+Web hacking, API testing, bug bounty workflows
+
+Practical exploitation knowledge
+
+Hands-on use of security tools and pentesting toolkits
+
+Request manipulation, authentication/authorization testing
+
+TryHackMe room completions (Log Analysis, Hash Cracking, Burp Suite, Pentester Tools)
+
+Blue Zone – Defensive Security / Protection Skills
+Hovering here transitions the page to a blue defensive environment. Skills appear framed as monitoring, hardening, or protection:
+
+Firewall configuration (FortiGate, UFW)
+
+VPN setup and network segmentation
+
+Log analysis and traffic monitoring (Wireshark)
+
+Systems hardening, directory services, group policies
+
+Security operations workflow experience
+
+Neutral / Core Zone – Foundational & Applied Tech
+Hovering here shows foundational technical competencies across infrastructure, programming, automation, IoT, and applied ML:
+
+Network architecture: Switching, Routing, VLANs, TCP/IP, DNS, DHCP
+
+Systems: Linux, Windows Server, virtualization (VirtualBox, Docker)
+
+Scripting: Python (applied for automation, data analysis, visualization), Bash/Shell
+
+Productivity platforms: Office 365
+
+IoT and embedded systems: Arduino, ESP32, Raspberry Pi, sensors, actuators
+
+Applied ML and computer vision: YOLOv6, YOLOv8, model training and deployment
+
+Automation projects: environmental monitoring alerts via Telegram/SMS/Gmail
+
+All skills must be realistic, practice-oriented, and evidence-based, reflecting hands-on exposure rather than formal certifications or course titles.
+
+Interaction & Dynamics
+
+The cursor position drives the entire page state. Hovering over red/blue zones morphs all content, layout, and color accents, emphasizing offensive or defensive context.
+
+Minimal, professional, functional animations: cards slide, details fade in/out, skills reposition smoothly; animation should highlight content meaning, not decorate.
+
+Skills are contextually reframed: the same competency appears differently depending on perspective. For example:
+
+Linux in Red → attack, enumeration, privilege escalation awareness
+
+Linux in Blue → monitoring, hardening, secure configuration
+
+No menus, no buttons, no page navigation; exploration is natural and intuitive.
+
+Design System
+
+Dark professional aesthetic with zone-based color accents: red/orange for offensive, blue for defensive, cyan for neutral.
+
+Responsive flexbox or grid layouts suitable for desktop and mobile.
+
+Interactive skill cards, project showcases, and dynamic panels.
+
+Social links subtly integrated: TryHackMe, GitHub, LinkedIn.
+
+Data Architecture
+
+TypeScript or JSON-based skill/project data model with attributes:
+
+Skill Name, Domain (Offense/Defense/Neutral), Category (Networking, Scripting, IoT, ML), Practical Exposure Level, Related Projects
+
+Projects include 3–5 featured items demonstrating application of skills across the spectrum
+
+Identity & Branding
+
+Name: Adel Ait Mouali
+
+Role: Network Specialist
+
+Portfolio tagline: “Explore the living spectrum: offense, defense, and core technology — skills revealed as you interact.”
+
+The portfolio must convey systems thinking, practical mastery, and professional maturity. It should feel alive, intelligent, and cohesive, giving viewers an immediate sense of expertise and hands-on experience without traditional CV elements.
