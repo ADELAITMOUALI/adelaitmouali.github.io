@@ -10,32 +10,37 @@ async function seedDatabase() {
   if (existingSkills.length === 0) {
     await db.insert(skills).values([
       // Red Zone (Offensive)
-      { name: "Linux 101", domain: "red", category: "Core", description: "Privilege awareness and enumeration." },
-      { name: "Web Hacking", domain: "red", category: "Application", description: "API testing, bug bounty workflows." },
-      { name: "Exploitation", domain: "red", category: "Practical", description: "Hands-on vulnerability exploitation." },
-      { name: "Pentesting Toolkits", domain: "red", category: "Tools", description: "Burp Suite, Hash Cracking, and other offensive tools." },
+      { name: "Linux 101", domain: "red", category: "Core", description: "Privilege awareness and enumeration. Hands-on practice from TCM Security & TryHackMe." },
+      { name: "Hacking APIs", domain: "red", category: "Application", description: "API testing, enumeration, and bug bounty workflows. Practical experience with REST/GraphQL endpoints." },
+      { name: "Practical Ethical Hacking", domain: "red", category: "Exploitation", description: "The complete hacking methodology. Hands-on exploitation of network vulnerabilities and AD environments." },
+      { name: "Practical Bug Bounty", domain: "red", category: "Application", description: "Advanced web application hacking, bug bounty workflows, and discovery techniques." },
+      { name: "Burp Suite Pro", domain: "red", category: "Tools", description: "Request manipulation, authentication/authorization testing, and automated vulnerability scanning." },
+      { name: "Practical Web Hacking", domain: "red", category: "Application", description: "Modern web exploitation techniques and security testing." },
+      { name: "Metasploit & Nmap", domain: "red", category: "Tools", description: "Advanced scanning, exploitation, and post-exploitation workflows." },
+
       // Blue Zone (Defensive)
-      { name: "Firewall Configuration", domain: "blue", category: "Network", description: "FortiGate, UFW." },
-      { name: "Network Segmentation", domain: "blue", category: "Network", description: "VPN setup and segmentation." },
-      { name: "Traffic Monitoring", domain: "blue", category: "Monitoring", description: "Log analysis and Wireshark." },
-      { name: "Systems Hardening", domain: "blue", category: "Systems", description: "Directory services, group policies." },
-      { name: "SecOps", domain: "blue", category: "Operations", description: "Security operations workflow experience." },
+      { name: "Firewall Configuration", domain: "blue", category: "Network", description: "Hardening perimeters with FortiGate and UFW. Policy management and traffic filtering." },
+      { name: "Network Segmentation", domain: "blue", category: "Network", description: "VPN setup, network isolation, and secure boundary management." },
+      { name: "Log Analysis & Wireshark", domain: "blue", category: "Monitoring", description: "Deep packet inspection and behavioral analysis. Traffic monitoring for anomalies." },
+      { name: "Systems Hardening", domain: "blue", category: "Systems", description: "Directory services, group policies, and OS level security configuration." },
+      { name: "Security Operations", domain: "blue", category: "Operations", description: "Managing security alerts and incident response workflows." },
+
       // Neutral Zone (Core)
-      { name: "Network Architecture", domain: "neutral", category: "Infrastructure", description: "Switching, Routing, VLANs, TCP/IP, DNS, DHCP." },
-      { name: "Systems", domain: "neutral", category: "Infrastructure", description: "Linux, Windows Server, VirtualBox, Docker." },
-      { name: "Scripting", domain: "neutral", category: "Programming", description: "Python (automation, data analysis), Bash/Shell." },
-      { name: "IoT & Embedded", domain: "neutral", category: "Hardware", description: "Arduino, ESP32, Raspberry Pi, sensors." },
-      { name: "Applied ML", domain: "neutral", category: "Data", description: "YOLOv6, YOLOv8 model training." },
+      { name: "Network Architecture", domain: "neutral", category: "Infrastructure", description: "Switching, Routing, VLANs, TCP/IP stack, DNS, DHCP implementation." },
+      { name: "Systems Administration", domain: "neutral", category: "Infrastructure", description: "Linux (Debian/RHEL), Windows Server, Virtualization (VirtualBox, Docker)." },
+      { name: "Advanced Scripting", domain: "neutral", category: "Programming", description: "Python development for automation. Libraries: Flask (web), NumPy (data), Matplotlib (viz), Tkinter (GUI), Requests." },
+      { name: "IoT & Embedded Systems", domain: "neutral", category: "Hardware", description: "Hardware interaction with Arduino, ESP32, Raspberry Pi, and various sensors/actuators." },
+      { name: "Applied Machine Learning", domain: "neutral", category: "Data", description: "Computer vision models with YOLOv6/v8. Model training, optimization, and deployment." },
     ]);
   }
 
   const existingProjects = await storage.getProjects();
   if (existingProjects.length === 0) {
     await db.insert(projects).values([
-      { title: "Environmental Monitoring Alerts", description: "Automated alert system via Telegram/SMS/Gmail.", techStack: ["Python", "IoT", "Sensors"], domain: "neutral" },
-      { title: "Object Detection Models", description: "Trained and deployed YOLOv6 and YOLOv8 models for computer vision.", techStack: ["Python", "Machine Learning", "YOLO"], domain: "neutral" },
-      { title: "TryHackMe Completions", description: "Completed modules in Log Analysis, Hash Cracking, and Burp Suite.", techStack: ["Burp Suite", "Security Tools"], domain: "red" },
-      { title: "Network Segmentation Deployment", description: "Designed and implemented secure network boundaries using FortiGate and VPNs.", techStack: ["FortiGate", "VPN", "Routing"], domain: "blue" },
+      { title: "Environmental Monitoring Alerts", description: "Automated alert system via Telegram/SMS/Gmail integrated with IoT sensors.", techStack: ["Python", "IoT", "Sensors", "Flask"], domain: "neutral" },
+      { title: "Object Detection Models", description: "Trained and deployed YOLOv6 and YOLOv8 models for real-time computer vision applications.", techStack: ["Python", "Machine Learning", "YOLO", "NumPy"], domain: "neutral" },
+      { title: "TryHackMe Practical Mastery", description: "Practical application of TCM Security methodologies. Mastery of Burp Suite, Nmap, and exploitation toolkits.", techStack: ["Burp Suite", "Nmap", "Metasploit"], domain: "red" },
+      { title: "FortiGate Network Shield", description: "Designed and implemented secure network boundaries with robust segmentation and VPNs.", techStack: ["FortiGate", "VPN", "Routing", "UFW"], domain: "blue" },
     ]);
   }
 }
