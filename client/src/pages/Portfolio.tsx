@@ -84,24 +84,16 @@ export default function Portfolio() {
         {/* Sticky Header Section */}
         <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-white/5 py-4 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto flex justify-between items-center">
-            <div>
-              <div className="flex items-center gap-4">
-                <img src="/images/myimage.jpg" alt="Adel Ait Mouali" className="w-12 h-12 rounded-full object-cover" />
-                    <div className="flex items-center gap-3">
-                      <h1 className="font-display text-2xl md:text-3xl font-bold tracking-tighter uppercase text-foreground">
-                        Adel Ait Mouali
-                      </h1>
-                      <iframe
-                        src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=1487925"
-                        title="tryhackme-badge"
-                        style={{ border: 'none', height: '40px' }}
-                        loading="lazy"
-                      />
-                    </div>
-              </div>
-              <p className="font-mono text-xs md:text-sm text-domain uppercase tracking-[0.2em]">
-                Network Specialist
-              </p>
+            <div class="flex items-center gap-4">
+              <img src="/images/myimage.jpg" alt="Adel Ait Mouali" className="w-12 h-12 rounded-full object-cover" />
+                  <div>
+                    <h1 className="font-display text-2xl md:text-3xl font-bold tracking-tighter uppercase text-foreground">
+                      Adel Ait Mouali
+                    </h1>
+                    <p className="font-mono text-xs md:text-sm text-domain uppercase tracking-[0.2em]">
+                      Network Specialist
+                    </p>
+                  </div>
             </div>
             <SocialLinks />
           </div>

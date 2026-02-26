@@ -31,11 +31,11 @@ export function SocialLinks() {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative p-4 rounded-xl border border-white/10 bg-black/40 hover:border-domain-alpha-50 hover:shadow-domain transition-all duration-300"
+          className="group relative p-3 rounded-xl border border-white/10 bg-black/40 hover:border-domain-alpha-50 hover:shadow-domain transition-all duration-300"
           aria-label={link.label}
         >
           <div className="absolute inset-0 rounded-xl bg-domain-alpha-10 opacity-0 group-hover:opacity-100 transition-opacity" />
-          <link.icon className="w-8 h-8 text-muted-foreground group-hover:text-domain transition-colors relative z-10" />
+          <link.icon className="w-6 h-6 text-muted-foreground group-hover:text-domain transition-colors relative z-10" />
         </a>
       ))}
     </div>
