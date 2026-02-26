@@ -6,7 +6,6 @@ import { Crosshair, Cpu, Shield } from "lucide-react";
 
 type DomainType = "neutral" | "blue" | "red";
 
-// Hero Section Component for the initial view
 function HeroSection() {
   return (
     <section className="h-screen snap-start flex flex-col justify-center items-center text-center p-4">
@@ -20,7 +19,7 @@ function HeroSection() {
       <iframe
         src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=1487925"
         title="tryhackme-badge"
-        style={{ border: 'none', height: '40px', marginBottom: '24px', filter: 'invert(1)' }}
+        style={{ border: 'none', width: '350px', height: '150px', marginBottom: '24px' }}
         loading="lazy"
       />
       <SocialLinks />
@@ -28,7 +27,6 @@ function HeroSection() {
   );
 }
 
-// Content Section Component for the main content areas
 function ContentSection({ 
   domain, 
   title, 
@@ -54,18 +52,6 @@ function ContentSection({
       ref={ref}
       className="h-screen snap-start flex flex-col justify-center py-20 relative"
     >
-      <div className="absolute top-0 left-0 right-0 z-20 py-4 px-4 sm:px-6 lg:px-8 bg-background/80 backdrop-blur-md border-b border-white/5">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-            <div className="flex items-center gap-4">
-                <img src="/images/myimage.jpg" alt="Adel Ait Mouali" className="w-10 h-10 rounded-full object-cover" />
-                <h1 className="font-display text-xl font-bold tracking-tighter uppercase text-foreground">
-                    Adel Ait Mouali
-                </h1>
-            </div>
-            <SocialLinks />
-        </div>
-      </div>
-      
       <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-32 bg-domain shadow-domain rounded-full opacity-50" />
         
@@ -91,10 +77,11 @@ function ContentSection({
   );
 }
 
-
 export default function Portfolio() {
   const [activeDomain, setActiveDomain] = useState<DomainType>("neutral");
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const heroRef = useRef(null);
+  const isHeroInView = useInView(heroRef, { threshold: 0.5 });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -105,12 +92,9 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className={`theme-${activeDomain} bg-background overflow-x-hidden transition-colors duration-1000`}>
-      {/* Background Ambience Layers */}
+    <div className={`theme-${activeDomain} bg-background overflow-x-hidden transition-colors duration-1000 h-screen overflow-y-scroll snap-y snap-mandatory`}>
       <div className="ambient-glow" />
       <div className="fixed inset-0 z-0 bg-grid-pattern opacity-50" />
-      
-      {/* Dynamic Cursor Glow */}
       <div
         className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 hidden md:block"
         style={{
@@ -118,28 +102,42 @@ export default function Portfolio() {
         }}
       />
 
-      <main className="h-screen overflow-y-scroll snap-y snap-mandatory">
-        <HeroSection />
+      {!isHeroInView && (
+          <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-white/5 py-4 px-4 sm:px-6 lg:px-8">
+              <div className="max-w-7xl mx-auto flex justify-between items-center">
+                  <div className="flex items-center gap-4">
+                      <img src="/images/myimage.jpg" alt="Adel Ait Mouali" className="w-10 h-10 rounded-full object-cover" />
+                      <h1 className="font-display text-xl font-bold tracking-tighter uppercase text-foreground">
+                          Adel Ait Mouali
+                      </h1>
+                  </div>
+                  <SocialLinks />
+              </div>
+          </header>
+      )}
 
-        <ContentSection 
-          domain="neutral" 
-          title="Core Technology" 
-          icon={Cpu} 
-          onInView={setActiveDomain} 
-        />
-        <ContentSection 
-          domain="blue" 
-          title="Defense Operations" 
-          icon={Shield} 
-          onInView={setActiveDomain} 
-        />
-        <ContentSection 
-          domain="red" 
-          title="Offense Capabilities" 
-          icon={Crosshair} 
-          onInView={setActiveDomain} 
-        />
-      </main>
+      <div ref={heroRef}>
+        <HeroSection />
+      </div>
+
+      <ContentSection 
+        domain="neutral" 
+        title="Core Technology" 
+        icon={Cpu} 
+        onInView={setActiveDomain} 
+      />
+      <ContentSection 
+        domain="blue" 
+        title="Defense Operations" 
+        icon={Shield} 
+        onInView={setActiveDomain} 
+      />
+      <ContentSection 
+        domain="red" 
+        title="Offense Capabilities" 
+        icon={Crosshair} 
+        onInView={setActiveDomain} 
+      />
     </div>
   );
 }
