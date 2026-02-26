@@ -2,14 +2,13 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "@shared/routes";
 import type { InsertSkill, InsertProject } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
+import { projects, skills } from "../data/portfolio-data";
 
 export function useSkills() {
   return useQuery({
     queryKey: [api.skills.list.path],
     queryFn: async () => {
-      const res = await fetch(api.skills.list.path, { credentials: "include" });
-      if (!res.ok) throw new Error("Failed to fetch skills");
-      return api.skills.list.responses[200].parse(await res.json());
+      return skills;
     }
   });
 }
@@ -18,9 +17,7 @@ export function useProjects() {
   return useQuery({
     queryKey: [api.projects.list.path],
     queryFn: async () => {
-      const res = await fetch(api.projects.list.path, { credentials: "include" });
-      if (!res.ok) throw new Error("Failed to fetch projects");
-      return api.projects.list.responses[200].parse(await res.json());
+      return projects;
     }
   });
 }

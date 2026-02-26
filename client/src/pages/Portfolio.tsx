@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useInView } from "framer-motion";
 import { SocialLinks } from "@/components/SocialLinks";
 import { ContentArea } from "@/components/ContentArea";
-import { AdminPanel } from "@/components/AdminPanel";
 import { Crosshair, Cpu, Shield } from "lucide-react";
 
 type DomainType = "neutral" | "blue" | "red";
@@ -129,8 +128,6 @@ export default function Portfolio() {
           />
         </main>
       </div>
-
-      <AdminPanel activeDomain={activeDomain} />
     </div>
   );
 }
