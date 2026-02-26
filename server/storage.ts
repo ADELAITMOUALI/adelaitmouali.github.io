@@ -1,5 +1,4 @@
-import { db } from "./db";
-import { skills, projects } from "@shared/schema";
+import { skills, projects } from "./data";
 import type { Skill, Project } from "@shared/schema";
 
 export interface IStorage {
@@ -7,14 +6,14 @@ export interface IStorage {
   getProjects(): Promise<Project[]>;
 }
 
-export class DatabaseStorage implements IStorage {
+export class LocalStorage implements IStorage {
   async getSkills(): Promise<Skill[]> {
-    return await db.select().from(skills);
+    return skills;
   }
 
   async getProjects(): Promise<Project[]> {
-    return await db.select().from(projects);
+    return projects;
   }
 }
 
-export const storage = new DatabaseStorage();
+export const storage = new LocalStorage();

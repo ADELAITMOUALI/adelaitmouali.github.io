@@ -6,6 +6,7 @@ import { Crosshair, Cpu, Shield } from "lucide-react";
 
 type DomainType = "neutral" | "blue" | "red";
 
+// Hero Section: Full-screen, centered content.
 function HeroSection() {
   return (
     <section className="h-screen snap-start flex flex-col justify-center items-center text-center p-4">
@@ -16,10 +17,11 @@ function HeroSection() {
       <p className="font-mono text-sm md:text-base text-domain uppercase tracking-[0.2em] mt-2 mb-4">
         Network Specialist
       </p>
+      {/* The TryHackMe badge is now sized correctly */}
       <iframe
         src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=1487925"
         title="tryhackme-badge"
-        style={{ border: 'none', width: '350px', height: '150px', marginBottom: '24px' }}
+        style={{ border: 'none', width: '350px', height: '150px', marginBottom: '24px', flexShrink: 0 }}
         loading="lazy"
       />
       <SocialLinks />
@@ -27,6 +29,7 @@ function HeroSection() {
   );
 }
 
+// Content Section: For "Core," "Defense," and "Offense."
 function ContentSection({ 
   domain, 
   title, 
@@ -70,13 +73,13 @@ function ContentSection({
             </h2>
           </div>
         </motion.div>
-
         <ContentArea domain={domain} />
       </div>
     </section>
   );
 }
 
+// Main Portfolio Component
 export default function Portfolio() {
   const [activeDomain, setActiveDomain] = useState<DomainType>("neutral");
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -92,52 +95,37 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className={`theme-${activeDomain} bg-background overflow-x-hidden transition-colors duration-1000 h-screen overflow-y-scroll snap-y snap-mandatory`}>
+    <div className={`theme-${activeDomain} bg-background text-foreground transition-colors duration-1000 h-screen overflow-hidden`}>
+      {/* Background and cursor effects */}
       <div className="ambient-glow" />
       <div className="fixed inset-0 z-0 bg-grid-pattern opacity-50" />
       <div
         className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 hidden md:block"
-        style={{
-          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, hsl(var(--domain-color) / 0.05), transparent 40%)`
-        }}
+        style={{ background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, hsl(var(--domain-color) / 0.05), transparent 40%)` }}
       />
 
-      {!isHeroInView && (
-          <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-white/5 py-4 px-4 sm:px-6 lg:px-8">
-              <div className="max-w-7xl mx-auto flex justify-between items-center">
-                  <div className="flex items-center gap-4">
-                      <img src="/images/myimage.jpg" alt="Adel Ait Mouali" className="w-10 h-10 rounded-full object-cover" />
-                      <h1 className="font-display text-xl font-bold tracking-tighter uppercase text-foreground">
-                          Adel Ait Mouali
-                      </h1>
-                  </div>
-                  <SocialLinks />
-              </div>
-          </header>
-      )}
-
-      <div ref={heroRef}>
-        <HeroSection />
-      </div>
-
-      <ContentSection 
-        domain="neutral" 
-        title="Core Technology" 
-        icon={Cpu} 
-        onInView={setActiveDomain} 
-      />
-      <ContentSection 
-        domain="blue" 
-        title="Defense Operations" 
-        icon={Shield} 
-        onInView={setActiveDomain} 
-      />
-      <ContentSection 
-        domain="red" 
-        title="Offense Capabilities" 
-        icon={Crosshair} 
-        onInView={setActiveDomain} 
-      />
+      {/* Sticky Header - appears when Hero is out of view */}
+      <header className={`fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-white/5 py-4 px-4 sm:px-6 lg:px-8 transition-opacity duration-300 ${isHeroInView ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <div className="flex items-center gap-4">
+            <img src="/images/myimage.jpg" alt="Adel Ait Mouali" className="w-10 h-10 rounded-full object-cover" />
+            <h1 className="font-display text-xl font-bold tracking-tighter uppercase text-foreground">
+              Adel Ait Mouali
+            </h1>
+          </div>
+          <SocialLinks />
+        </div>
+      </header>
+      
+      {/* Main scrollable container */}
+      <main className="h-full w-full overflow-y-scroll snap-y snap-mandatory">
+        <div ref={heroRef}>
+          <HeroSection />
+        </div>
+        <ContentSection domain="neutral" title="Core Technology" icon={Cpu} onInView={setActiveDomain} />
+        <ContentSection domain="blue" title="Defense Operations" icon={Shield} onInView={setActiveDomain} />
+        <ContentSection domain="red" title="Offense Capabilities" icon={Crosshair} onInView={setActiveDomain} />
+      </main>
     </div>
   );
 }
