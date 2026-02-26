@@ -1,11 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { api } from "@shared/routes";
 
 export function useSkills() {
   return useQuery({
-    queryKey: [api.skills.list.path],
+    queryKey: ["/api/skills"],
     queryFn: async () => {
-      const res = await fetch(api.skills.list.path);
+      const res = await fetch("/api/skills");
       return res.json();
     }
   });
@@ -13,9 +12,9 @@ export function useSkills() {
 
 export function useProjects() {
   return useQuery({
-    queryKey: [api.projects.list.path],
+    queryKey: ["/api/projects"],
     queryFn: async () => {
-      const res = await fetch(api.projects.list.path);
+      const res = await fetch("/api/projects");
       return res.json();
     }
   });
