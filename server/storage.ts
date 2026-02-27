@@ -1,19 +1,8 @@
-import { getSkills, getProjects } from "./data";
-import type { Skill, Project } from "@shared/schema";
+import session from "express-session";
+import memorystore from "memorystore";
 
-export interface IStorage {
-  getSkills(): Promise<Skill[]>;
-  getProjects(): Promise<Project[]>;
-}
+const MemoryStore = memorystore(session);
 
-export class LocalStorage implements IStorage {
-  async getSkills(): Promise<Skill[]> {
-    return await getSkills();
-  }
-
-  async getProjects(): Promise<Project[]> {
-    return await getProjects();
-  }
-}
-
-export const storage = new LocalStorage();
+export const store = new MemoryStore({
+  checkPeriod: 86400000, // prune expired entries every 24h
+});

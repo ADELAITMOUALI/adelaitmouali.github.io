@@ -1,21 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
+import { skills } from "@shared/data";
 
 export function useSkills() {
   return useQuery({
-    queryKey: ["/api/skills"],
+    queryKey: ["skills"],
     queryFn: async () => {
-      const res = await fetch("/api/skills");
-      return res.json();
-    }
-  });
-}
-
-export function useProjects() {
-  return useQuery({
-    queryKey: ["/api/projects"],
-    queryFn: async () => {
-      const res = await fetch("/api/projects");
-      return res.json();
-    }
+      return skills;
+    },
   });
 }

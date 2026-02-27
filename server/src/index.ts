@@ -1,18 +1,28 @@
-import express from 'express';
-import cors from 'cors';
-import { skills, projects } from './data';
+import express from "express";
+import { skills } from "./data";
+import { setupVite } from "../vite";
+import apiRouter from "../routes";
+import { staticRouter } from "../static";
 
-const app = express();
-app.use(cors());
+async function main() {
+  const app = express();
 
-app.get('/api/skills', (req, res) => {
-  res.json(skills);
-});
+  app.use(express.json());
 
-app.get('/api/projects', (req, res) => {
-  res.json(projects);
-});
+  // Set up Vite middleware in development
+  if (process.env.NODE_ENV === "development") {
+    await setupVite(app);
+  } else {
+    // Serve static files in production
+    app.use(staticRouter);
+  }
 
-app.listen(3001, () => {
-  console.log('Server is running on port 3001');
-});
+  // API routes
+  app.use(apiRouter);
+
+  app.listen(3000, () => {
+    console.log("Server is running on http://localhost:3000");
+  });
+}
+
+main();
