@@ -20,7 +20,7 @@ export const skills: Skill[] = [
       // Neutral Zone (Core)
       { id: 13, name: "Network Architecture", domain: "neutral", category: "Infrastructure", description: "Switching, Routing, VLANs, TCP/IP stack, DNS, DHCP implementation." },
       { id: 14, name: "Systems Administration", domain: "neutral", category: "Infrastructure", description: "Linux (Debian/RHEL), Windows Server, Virtualization (VirtualBox, Docker)." },
-      { id: 15, name: "Advanced Scripting", domain: "neutral", category: "Programming", description: "Python development for automation. Libraries: Flask (web), NumPy (data), Matplotlib (viz), Tkinter (GUI), Requests." },
+      { id: 15, name: "Advanced Scripting", domain: "neutral", category: "Programming", description: "Python development for automation. Libraries: Flask (web), NumPy (data), Matplotlib (viz), Tkinter (GUI)." },
       { id: 16, name: "IoT & Embedded Systems", domain: "neutral", category: "Hardware", description: "Hardware interaction with Arduino, ESP32, Raspberry Pi, and various sensors/actuators." },
       { id: 17, name: "Applied Machine Learning", domain: "neutral", category: "Data", description: "Computer vision models with YOLOv6/v8. Model training, optimization, and deployment." }
 ];
