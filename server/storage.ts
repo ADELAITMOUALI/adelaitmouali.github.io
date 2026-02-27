@@ -1,4 +1,4 @@
-import { skills, projects } from "./data";
+import { getSkills, getProjects } from "./data";
 import type { Skill, Project } from "@shared/schema";
 
 export interface IStorage {
@@ -8,11 +8,11 @@ export interface IStorage {
 
 export class LocalStorage implements IStorage {
   async getSkills(): Promise<Skill[]> {
-    return skills;
+    return await getSkills();
   }
 
   async getProjects(): Promise<Project[]> {
-    return projects;
+    return await getProjects();
   }
 }
 

@@ -1,4 +1,4 @@
-import type { Skill } from "@shared/schema";
+import type { Skill, Project } from "@shared/schema";
 
 export const skills: Skill[] = [
   {
@@ -24,6 +24,12 @@ export const skills: Skill[] = [
   }
 ];
 
+export const projects: Project[] = [];
+
 export async function getSkills() {
   return skills;
+}
+
+export async function getProjects() {
+  return projects;
 }
