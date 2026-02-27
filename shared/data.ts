@@ -8,7 +8,6 @@ export const skills: Skill[] = [
       { id: 4, name: "Practical Bug Bounty", domain: "red", category: "Application", description: "Advanced web application hacking, bug bounty workflows, and discovery techniques." },
       { id: 5, name: "Burp Suite Pro", domain: "red", category: "Tools", description: "Request manipulation, authentication/authorization testing, and automated vulnerability scanning." },
       { id: 6, name: "Practical Web Hacking", domain: "red", category: "Application", description: "Modern web exploitation techniques and security testing." },
-      { id: 7, name: "Metasploit & Nmap", domain: "red", category: "Tools", description: "Advanced scanning, exploitation, and post-exploitation workflows." },
 
       // Blue Zone (Defensive)
       { id: 8, name: "Firewall Configuration", domain: "blue", category: "Network", description: "Hardening perimeters with FortiGate and UFW. Policy management and traffic filtering." },

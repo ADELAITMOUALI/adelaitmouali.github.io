@@ -5,12 +5,12 @@ import type { DomainType } from "./ZoneSelector";
 import { useState } from "react";
 
 export function ContentArea({ domain }: { domain: DomainType }) {
-  const { data: skills, isLoading: loadingSkills } = useSkills();
+  const skills = useSkills();
   const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
 
   const activeSkills = skills?.filter(s => s.domain === domain) || [];
 
-  const isEmpty = !loadingSkills && activeSkills.length === 0;
+  const isEmpty = activeSkills.length === 0;
 
   return (
     <div className="relative">
@@ -22,12 +22,7 @@ export function ContentArea({ domain }: { domain: DomainType }) {
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.5 }}
         >
-          {loadingSkills ? (
-            <div className="flex flex-col items-center justify-center py-32 text-center">
-              <div className="w-16 h-16 rounded-full border-2 border-domain/30 border-t-domain animate-spin mb-6" />
-              <h3 className="font-display text-xl text-domain mb-2 tracking-widest uppercase italic">Initializing Link...</h3>
-            </div>
-          ) : isEmpty ? (
+          {isEmpty ? (
             <div className="py-20 text-center border border-dashed border-white/10 rounded-2xl bg-black/20">
               <p className="font-body text-muted-foreground">Sector data currently offline.</p>
             </div>
